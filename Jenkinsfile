@@ -15,6 +15,15 @@ pipeline {
             
          }
       }
+      stage('static code analysis') {
+         steps {
+           bat '''
+                cd demo-application
+                dir
+                mvn sonar:sonar
+            '''
+         } 
+      }
       stage('Junit') {
          steps {
            bat '''
